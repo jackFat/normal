@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //   let {...a} = Object.create({x: 1})
+    //   console.log(a)
+
+    //   (function() {
+    //       var b = c =2
+    //   })()
+    //   console.log(b)
+    //   console.log(c)
+
+      // let obj = {a:1,b:2,c:3}
+      // Array.prototype.forEach.call(obj, function(current, index, array){
+      //     console.log(current, index, array)
+      // })
+      // let a = false
+      // let count = 0
+      // let arr=[0, 1, 2,1]
+      // for(let i in arr) {
+      //   debugger
+      //   count ++
+      //   if (arr[i] < 1) {
+      //     a = false
+      //     break
+      //   } else {
+      //     a = true
+      //   }
+      // }
+      // console.log(a)
+      // console.log(count)
+
+      // const target = {a: 1, b: 2}
+      // const source = {b: 4, c: 5}
+      // const returnTarget = Object.assign(target, source)
+      // console.log(target, source)
+      // console.log(returnTarget)
+
+      let rowObj = {
+        id: 1,
+        name: 'zangli',
+        age: 15,
+        obj: {
+          name: 'lili'
+        }
+      }
+      let {id, age, name} = rowObj
+      obj = {id, age, name}
+      arr = Object.keys(obj)
+      
+      console.log(arr.length)
+
+      function setObj(obj, f, val) {
+        Object.keys(val).map(keys => {
+          obj[f][keys] = val[keys]
+        })
+      }
+
+      this.setObj(rowObj, 'obj', {name: 'll'})
+      console.log(rowObj)
+
+
+      let colObj = {
+        colname: '张三',
+        colage: 14,
+        colplace: '武汉'
+      }
+      let {colname: colNames, colage} = colObj
+      colname = '张三修改'
+      colObj = {...colObj, colname}
+      console.log(colNames, colage)
+      console.log(colObj)
+
+      const Mobj = {
+        name: 'zhangsan',
+        age: 16
+      }
+      const Sobj = {
+        width: 200,
+        height: 100,
+        color: 'pink'
+      } 
+      function changeMobj(obj) {
+        obj.name = 'lisi'
+        obj.say = function hello() {}
+      }
+      function createAssign(obj) {
+        obj = Object.assign({
+          width: 200,
+          height: 100,
+          background: 'red'
+        }, obj)
+      }
+      changeMobj(Mobj)
+      createAssign(Sobj)
+      console.log(Mobj, 'Mobj')
+      console.log(Sobj, 'Sobj')
+
+
+      const nObj = Object.create({name: 'aa'})
+      console.log(nObj, 'nObj')
+    </script>
+</body>
+</html>

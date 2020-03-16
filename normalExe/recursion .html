@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            line-height: 30px;
+            border: 1px solid lightblue;
+            text-align: center;
+            transform: translate(15px, 15px)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p>这是文字</p>
+    </div>
+</body>
+
+<script>
+    var meta = [1, 2, [3, 4, [5]], 6, [7, [8, 9, [10, 11, [12]]]]]
+    var resultMap = {}
+
+    function fillArr(array, result) {
+        var count = array.length
+        var i = 0
+        if (!count) {
+            return []
+        }
+        for (; i < count; i++) {
+            var temp = array[i]
+            var g = result[temp]
+            if (g) {
+                result.push(g)
+            } else {
+                if (Array.isArray(temp)) {
+                    fillArr(temp, result)
+                } else {
+                    result.push(temp)
+                }
+            }
+        }
+    }
+
+    var date1 = new Date();
+    var time1 = date1.getTime();
+    var r = [];
+    fillArr(meta, r);
+    var date2 = new Date();
+    var time2 = date2.getTime();
+    console.log('no cache time : ', time2 - time1);
+    var date3 = new Date();
+    var time3 = date3.getTime();
+    var f = [];
+    fillArr(meta, f);
+    var date4 = new Date();
+    var time4 = date4.getTime();
+    console.log('cache time : ', time4 - time3);
+</script>
+
+</html>

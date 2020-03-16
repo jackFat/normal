@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <style>
+   *{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+.clearfix::after{
+  content:'';
+  display:block;
+  clear:both;
+}
+.box{
+  margin-left:30px;
+  margin-bottom:20px;
+}
+
+.tab{
+  float:left;
+  padding:5px 20px;
+  background:skyblue;
+  border-top:1px solid;
+  border-left:1px solid;
+}
+
+.tab.active{
+  background:white;
+}
+.tab:last-child{
+  border-right: 1px solid ;
+}
+.cont{
+  width:250px;
+  height:200px;
+  background:pink;
+  border:1px solid;
+}
+.panel{
+  display:none;
+  background:pink;
+}
+.panel.active{
+  display:block;
+}
+  </style>
+</head>
+<body>
+    <div class="box">
+        <div class="header clearfix">
+          <div class="tab active">1</div>
+          <div class="tab">2</div>
+          <div class="tab">3</div>
+          <div class="tab">4</div>
+        </div>
+        <div class="cont">
+          <div class="panel active">p1</div>
+          <div class="panel">p2</div>
+          <div class="panel">p3</div>
+          <div class="panel">p4</div>
+        </div>
+      </div>
+</body>
+
+<script>
+  $(function() {
+    $('.tab').on('click',function(){
+      $(this).addClass('active').siblings().removeClass('active')//给当前点击元素添加active，移除兄弟元素的active
+      $(this).parents('.box')
+      .find('.panel')
+      .eq($(this).index())
+      .addClass('active')
+      .siblings()
+      .removeClass('active')//利用当前tab的index值寻找父元素下index值相同的panel并添加active，移除其他panel 的active
+    })
+  })
+</script>
+</html>

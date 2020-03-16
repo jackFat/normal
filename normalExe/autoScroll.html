@@ -1,0 +1,65 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>mq</title>
+  <style>
+    #div1 {
+      display: black;
+      width: 110px;
+      height: 50px;
+      line-height: 50px;
+      white-space: nowrap;
+      overflow: hidden;
+      background-color: #a2a2a2;
+      margin: 15px;
+      padding: 5px 15px;
+    }
+
+    span {
+      display: inline-block;
+      color: #fff;
+      padding-right: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="div1">
+    <span id="span1">天天币专享项</span>
+    <span id="span2"></span>
+  <!-- </div><span id="span1">天天币专享项目A</span> -->
+</body>
+<script>
+  window.onload = function () {
+    var div, span, span2, i, timer;
+
+    function init() {
+      setInterval(ttb, 50);
+    }
+
+    function ttb() {
+      div = getId('div1');
+      span = getId('span1');
+      span2 = getId('span2');
+
+      span2.innerHTML = span.innerHTML;
+      if (span.offsetWidth <= div.scrollLeft) {
+        div.scrollLeft -= span.offsetWidth;
+
+      } else {
+        div.scrollLeft++;
+      }
+
+    }
+
+    function getId(Id) {
+      return document.getElementById(Id);
+    }
+    window.onload = init();
+  }
+</script>
+
+</html>

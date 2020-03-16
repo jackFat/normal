@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var i = 1
+      function chilld() {
+          i++
+          console.log('次数' + i)
+          return k;
+          function k() {
+              return 'i love you'
+          }
+      }
+      chilld()
+      console.log(chilld()())
+
+      function sum(i) {
+          return function getData(j) {
+              return i + j
+          }
+      }
+      console.log(sum(1)(3))
+
+      function summer() {
+          let fn = Array.apply.pop(arguments)
+          
+      }
+    </script>
+</body>
+</html>

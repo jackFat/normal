@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 'zhangsan'
+        var b = [1, 2,3]
+        var obj = {
+            a: 'jiji',
+            b: 1,
+            get() {
+                return this.a +  this.b
+            }
+        }
+        function get() {
+            var a = 'lili'
+            return a +  this.b
+        }
+        let fun2 = (function fun1() {
+            var a = 'mm'
+            return a + this.b
+        })()
+        var fun = obj.get()
+        console.log(fun)
+        console.log(get())
+
+        console.log(1 || 2)
+        console.log(1&&2)
+        console.log(0 || 1)
+        console.log(1 || 2)
+        console.log(fun2)
+        console.log(a)
+
+        // 原型
+        function fn() {
+            this.a = 1
+            console.log(this.a)
+        }
+        fn.prototype = {
+            a: 2,
+            b: function() {
+                this.a = 3
+                console.log(this.a)
+            }
+        }
+        var f = new fn()
+        console.log(f.fn())
+        console.log(f.b())
+    </script>
+</body>
+</html>

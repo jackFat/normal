@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+  <script src="./Observer.js"></script>
+  <script src="./Mvue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <ul>
+      <li>{{person.name}}</li>
+      <li>{{person.age}}</li>
+      <li>{{person.sex}} ----</li>
+    </ul>
+
+    <ul>
+      <li v-text="msg"></li>
+      <li v-text="person.name"></li>
+      <li><input type="text" v-model="value">{{value}}</li>
+      <li v-html="htmlStr"></li>
+    </ul>
+
+    <img v-bind:src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2474359490,1160804813&fm=26&gp=0.jpg" alt="">
+
+    <button v-on:click="handleClick">点击on</button>
+    <button @click="handleClick">点击@</button>
+
+    <img :src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2474359490,1160804813&fm=26&gp=0.jpg" alt="">
+  </div>
+
+  <script>
+    const vue = new Mvue({
+      el: '#app',
+      data: {
+        title: '这个是新标题',
+          person: {
+            name: '张三',
+            age: 10,
+            sex: 'formal'
+          },
+          msg: '信息内容',
+          value: '输入框内容',
+          htmlStr: '<section style="color: red; fontSize: 20px">这是一段html</section>'
+      },
+      methods: {
+        handleClick() {
+          console.log(this)
+        }
+      }
+    })
+    
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./js/konva.js"></script>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  
+  <script>
+
+    var stage = new Konva.Stage({
+      container: 'container',
+      width: window.innerWidth,
+      height: window.innerHeight
+    })
+    
+
+    var layer = new Konva.Layer()
+    stage.add(layer)
+
+    var cenX = stage.width() / 2
+    var cenY = stage.height() / 2
+
+    var x = stage.width() / 8
+    var y = stage.height() / 2
+
+    var maxWidth = 3 / 4 * stage.width()
+    var width = 100
+    var height = stage.height() / 12
+
+    var innerRect =  new Konva.Rect({
+      x: x,
+      y: y,
+      width: width,
+      height: height,
+      opacity: .7,
+      fill: 'lightblue',
+      cornerRadius: height / 2
+    })
+
+    layer.add(innerRect)
+
+    var outerRect = new Konva.Rect({
+      x: x,
+      y: y,
+      width: maxWidth,
+      height: height,
+      stroke: 'blue',
+      strokeWidth: 4,
+      // fill: 'green'
+      cornerRadius: height / 2
+    })
+
+    layer.add(outerRect)
+
+    layer.draw()
+
+
+
+    innerRect.to({
+      width: maxWidth,
+      duration: 1.5,
+      opacity: .3
+    })
+
+
+  </script>
+</body>
+</html>

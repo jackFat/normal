@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+  <style>
+    .out-wrapper{
+      display: flex;
+    }
+    .inner-box{
+      width: 50px;
+      line-height: 50px;
+      margin-right: 10px;
+    }
+    .inner-box::after{
+      content: '|';
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="out-wrapper">
+    <div class="inner-box">box1</div>
+    <div class="inner-box">box2</div>
+    <div class="inner-box">box3</div>
+    <div class="inner-box">box4</div>
+    <div class="inner-box">box5</div>
+    <div class="inner-box">box6</div>
+    <div class="inner-box">box7</div>
+    <div class="inner-box">box8</div>
+    <div class="inner-box">box9</div>
+    <div class="inner-box">box10</div>
+  </div>
+  <div class="out-wrapper">
+      <div class="inner-box">box1</div>
+      <div class="inner-box">box2</div>
+      <div class="inner-box">box3</div>
+      <div class="inner-box">box4</div>
+      <div class="inner-box">box5</div>
+      <div class="inner-box">box6</div>
+      <div class="inner-box">box7</div>
+      <div class="inner-box">box8</div>
+      <div class="inner-box">box9</div>
+      <div class="inner-box">box10</div>
+    </div>
+    <div class="out-wrapper">
+        <div class="inner-box">box1</div>
+        <div class="inner-box">box2</div>
+        <div class="inner-box">box3</div>
+        <div class="inner-box">box4</div>
+        <div class="inner-box">box5</div>
+        <div class="inner-box">box6</div>
+        <div class="inner-box">box7</div>
+        <div class="inner-box">box8</div>
+        <div class="inner-box">box9</div>
+        <div class="inner-box">box10</div>
+      </div>
+      <div class="out-wrapper">
+          <div class="inner-box">box1</div>
+          <div class="inner-box">box2</div>
+          <div class="inner-box">box3</div>
+          <div class="inner-box">box4</div>
+          <div class="inner-box">box5</div>
+          <div class="inner-box">box6</div>
+          <div class="inner-box">box7</div>
+          <div class="inner-box">box8</div>
+          <div class="inner-box">box9</div>
+          <div class="inner-box">box10</div>
+        </div>
+</body>
+<script>
+  $('.inner-box:last-child').each(function() {
+    $(this).mouseover(function() {
+      console.log($(this[0])).css($(this[0]:))
+    })
+  })
+</script>
+</html>

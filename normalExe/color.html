@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="color"/>
+  <div class="box"></div>
+</body>
+
+<script>
+  function getInfo({ name="zangli", age=15, adress="hubei"}) {
+    console.log(name + age + adress)
+  }
+  getInfo({name: 'lisi', adress: 'hunan'})
+
+  function sum(...args) {
+    return args.reduce((total, current) => total + current)
+  }
+  const sumRes = sum(1,2,3,4,5,6)
+  console.log(sumRes)
+
+  function filter(filterCur, ...args) {
+    console.log(filterCur, ...args)
+    return args.reduce(current => { current % filterCur == 0})
+  }
+  const filterRes = filter(2,0,1,2,3,4,5,6)
+  console.log(filterRes)
+
+  const str  = `张三是个孩子
+  
+              爱吃香蕉`
+  // console.log(str.replace(/[\r\n]/g,"").replace(/[ ]/g,""))
+  console.log(str.replace(/[\r\n]/g,""))
+  document.querySelector('.box').innerHTML = str
+
+  let [first, ...rest] = [0,1,2,3,4,5,6]
+  console.log(first, 'a' , rest)
+
+  const zsObj = {
+    name: 'zs',
+    age: 16,
+    address: 'sanxi',
+    getSch() {
+      console.log(this.school);
+      
+    }
+  }
+
+  function info() {
+    console.log(this.name + this.age + this.address + this.school)
+  }
+  const nameObj = Object.create(zsObj)
+  nameObj.school = '小学'
+  console.log(zsObj.school)
+  zsObj.getSch()
+  info.call(zsObj)
+  console.log(zsObj.hasOwnProperty('age'))
+</script>
+</html>

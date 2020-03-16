@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>自制手风琴</title>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+  <style type="text/css">
+    body,
+    ul,
+    li {
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      list-style-type: none;
+      cursor: pointer;
+      color: white;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    ul {
+      width: 200px;
+    }
+
+    ul span {
+      background-color: skyblue;
+      display: block;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+    }
+
+    ul:last-child span {
+      border-bottom: none;
+    }
+
+    /*清除最后一个span的底部border*/
+    li {
+      background-color: lightgray;
+      display: none;
+    }
+
+    li:hover {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <span>标题11111</span>
+    <li>11111</li>
+    <li>11111</li>
+    <li>11111</li>
+    <li>11111</li>
+    <li>11111</li>
+  </ul>
+  <ul>
+    <span>标题22222</span>
+    <li>22222</li>
+    <li>22222</li>
+    <li>22222</li>
+    <li>22222</li>
+    <li>22222</li>
+  </ul>
+  <ul>
+    <span>标题33333</span>
+    <li>33333</li>
+    <li>33333</li>
+    <li>33333</li>
+    <li>33333</li>
+    <li>33333</li>
+  </ul>
+  <ul>
+    <span>标题44444</span>
+    <li>44444</li>
+    <li>44444</li>
+    <li>44444</li>
+    <li>44444</li>
+    <li>44444</li>
+  </ul>
+  <ul>
+    <span>标题55555</span>
+    <li>55555</li>
+    <li>55555</li>
+    <li>55555</li>
+    <li>55555</li>
+    <li>55555</li>
+  </ul>
+  <script type="text/javascript">
+    $('span').click(function () {
+      if ($(this).siblings("li").hasClass('on')) {
+        $(this).siblings("li").slideUp(500).removeClass("on");
+      } else {
+        // 首先要清除其他li标签的on类名
+        $(this).parent().siblings().children("li").removeClass("on");
+        // on类名是随便起的，也可是active什么的都行
+        $(this).siblings("li").slideDown(500).addClass("on").parent().siblings().children("li").slideUp(500);
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 父类
+        function Super() {
+            this.supPro = 'Super Propertype'
+        }
+        Super.prototype.showSuper = function() {
+                console.log(this.supPro)
+            }
+            // 子类
+        function Sup() {
+            this.sup = 'super Propertype'
+        }
+        Sup.prototype.showSup = function() {
+            console.log(this.sup)
+        }
+
+        Sup.prototype = new Super()
+        var sup = new Sup()
+        console.log(sup.toString())
+        sup.showSuper()
+        console.log(sup)
+        sup.showSup()
+    </script>
+</body>
+
+</html>

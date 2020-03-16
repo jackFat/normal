@@ -1,0 +1,73 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-07 20:10:44
+ * @LastEditTime : 2020-02-07 20:47:02
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \normal\canvas\lineChart.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="myCanvas">
+    请升级浏览器
+  </canvas>
+</body>
+
+<script>
+  var canvas = document.querySelector('#myCanvas')
+  var context = canvas.getContext('2d');
+  canvas.width = 600
+  canvas.height = 600
+  canvas.style.border = '1px solid gray'
+  var data = [.2, .3, .1, .5, .8, .6]
+
+  var x0 = 100, y0 = 500
+  var Awidth = 400, arrowWidht = 10
+  var lienWdith = Awidth / (data.length + 1 )
+  
+  // 绘制X轴
+  context.beginPath();
+  context.strokeStyle = 'blue';
+  context.moveTo(x0, y0)
+  context.lineTo(x0+Awidth, y0)
+  context.stroke()
+  context.lineTo(x0+Awidth-arrowWidht, y0-arrowWidht)
+  context.stroke()
+  context.beginPath()
+  context.moveTo(x0+Awidth, y0)
+  context.lineTo(x0+Awidth-arrowWidht, y0+arrowWidht)
+  context.stroke()
+
+  // 绘制Y轴
+  context.beginPath()
+  context.strokeStyle = 'orange'
+  context.moveTo(x0, y0)
+  context.lineTo(x0, y0 - Awidth)
+  context.stroke()
+  context.lineTo(x0-arrowWidht, y0 - Awidth + arrowWidht)
+  context.stroke()
+  context.beginPath()
+  context.moveTo(x0, y0 - Awidth)
+  context.lineTo(x0+arrowWidht, y0 - Awidth + arrowWidht)
+  context.stroke()
+
+  // 绘制折线图
+
+  context.beginPath()
+  context.strokeStyle = 'green'
+  for (var i = 0; i < data.length; i++) {
+    var x = x0 + 1/2 * lienWdith + lienWdith * i
+    var y = y0 - data[i] * Awidth
+    context.lineTo(x, y)
+  }
+  context.stroke()
+  
+</script>
+</html>

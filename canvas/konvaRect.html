@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./js/konva.js"></script>
+</head>
+<body>
+  <div id="container"></div>
+
+  <script>
+
+    
+    var stage = new Konva.Stage({
+      container: 'container',
+      width: window.innerWidth,
+      height: window.innerHeight,
+    })
+
+
+    var layer = new Konva.Layer()
+    stage.add(layer)
+
+    var rect = new Konva.Rect({
+      x: 100,
+      y: 100,
+      opacity: .4,
+      width: 100,
+      height: 200,
+      rotation: 40,
+      scaleX: 1.2,
+      scaleY: 1.2,
+      draggable: true,
+      fill: 'orange'
+    })
+
+    layer.add(rect)
+
+    layer.draw()
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .course-table,
+    .course-table td {
+      border: 1px solid #ddd;
+      text-align: center;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .course-table {
+      width: 100%;
+    }
+
+    .course-table thead {
+      color: #333;
+      font-weight: 800;
+    }
+
+    .course-table td {
+      width: 16.666%;
+      line-height: 34px;
+      border: 1px solid #ddd;
+    }
+
+    .table-content {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="table-content" id="table_con">
+    <!-- <table class="course-table">
+          <thead>
+            <tr>
+              <td>课程分类</td>
+              <td>课程课阶</td>
+              <td>每节课抵扣课时</td>
+              <td>课时卡人次</td>
+              <td>时段卡人次</td>
+              <td>上课人次总计</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="3">游泳课</td>
+              <td>初级游泳</td>
+              <td>1</td>
+              <td>10</td>
+              <td>20</td>
+              <td>30</td>
+            </tr>
+            <tr>
+              <td>中级游泳</td>
+              <td>2</td>
+              <td>10</td>
+              <td>20</td>
+              <td>30</td>
+            </tr>
+            <tr>
+              <td>高级游泳</td>
+              <td>3</td>
+              <td>10</td>
+              <td>20</td>
+              <td>30</td>
+            </tr>
+  
+            <tr>
+              <td rowspan="3">音乐课</td>
+              <td>初级游泳</td>
+              <td>1</td>
+              <td>10</td>
+              <td>20</td>
+              <td>30</td>
+            </tr>
+            <tr>
+              <td>中级游泳</td>
+              <td>2</td>
+              <td>10</td>
+              <td>20</td>
+              <td>30</td>
+            </tr>
+            <tr>
+              <td>高级游泳</td>
+              <td>3</td>
+              <td>10</td>
+              <td>20</td>
+              <td>30</td>
+            </tr>
+  
+            <tr>
+              <td rowspan="3">乐高课</td>
+              <td>初级游泳</td>
+              <td>1</td>
+              <td>10</td>
+              <td>20</td>
+              <td>30</td>
+            </tr>
+            <tr>
+              <td>中级游泳</td>
+              <td>2</td>
+              <td>10</td>
+              <td>20</td>
+              <td>30</td>
+            </tr>
+            <tr>
+              <td>高级游泳</td>
+              <td>3</td>
+              <td>10</td>
+              <td>20</td>
+              <td>30</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2">合计</td>
+              <td>18</td>
+              <td>30</td>
+              <td>40</td>
+              <td>180</td>
+            </tr>
+          </tfoot>
+        </table> -->
+  </div>
+</body>
+
+<script>
+  var dataStr =
+    '{"status":1,"message":"\u83b7\u53d6\u6210\u529f","data":[{"id":"170","title":"\u6e38\u6cf3","childs":[{"id":"917","cr_id":"170","title":"\u521d\u7ea7\u6e38\u6cf3\u8bfe","hour":"1.0","ru_id":"287762,287787,287788,287791,287793,287794,287797,287785,287784,287765,287763,287773,287764,287770,287779,287780,287800,287776,287782,287781","package_type_1":"18","package_type_2":"8","total":26},{"id":"918","cr_id":"170","title":"\u4e2d\u7ea7\u6e38\u6cf3\u8bfe","hour":"1.0","ru_id":"287795,287777,287798,287799,287796","package_type_1":"6","package_type_2":"1","total":7}],"is_last":0},{"id":"171","title":"\u97f3\u4e50","childs":[{"id":"914","cr_id":"171","title":"\u521d\u7ea7\u97f3\u4e50\u8bfe","hour":"1.0","ru_id":"287778,287792","package_type_1":"1","package_type_2":"2","total":3}],"is_last":0},{"id":"172","title":"\u7f8e\u672f","childs":[{"id":"423","cr_id":"172","title":"\u521d\u7ea7\u7f8e\u672f\u8bfe","hour":"1.0","ru_id":"287790,287789","package_type_1":0,"package_type_2":0,"total":0}],"is_last":0},{"id":"322","title":"\u82f1\u8bed","childs":[{"id":"908","cr_id":"322","title":"\u521d\u7ea7\u82f1\u8bed\u8bfe","hour":"1.0","ru_id":"287786","package_type_1":0,"package_type_2":0,"total":0}],"is_last":0},{"id":0,"title":"\u5408\u8ba1","is_last":1,"childs":[{"id":0,"cr_id":0,"title":"\u5408\u8ba1","hour":5,"package_type_1":25,"package_type_2":11,"total":36}]}]}'
+  var dataJson = JSON.parse(dataStr).data
+  console.log(dataJson)
+  var tableStr = ' <table class="course-table">' +
+    '<thead>' +
+    '<tr>' +
+    '<td>课程分类</td>' +
+    '<td>课程课阶</td>' +
+    '<td>每节课抵扣课时</td>' +
+    '<td>课时卡人次</td>' +
+    '<td>时段卡人次</td>' +
+    '<td>上课人次总计</td>' +
+    '</tr>' +
+    '</thead>' +
+    '<tbody>'
+
+  window.onload = function () {
+    var table_con = document.getElementById('table_con')
+    for (let i = 0; i < dataJson.length; i++) {
+      for (let j = 0; j < dataJson[i].childs.length; j++) {
+
+
+        tableStr += '<tr>'
+        for (let k = 0; k < 6; k++) {
+          console.log(k)
+          if (!dataJson[i].is_last) {
+            if (k == 0 && j == 0) {
+              tableStr += "<td rowspan=" + dataJson[i].childs.length + ">" + dataJson[i].title + "</td>"
+              // tableStr += "<td >" + dataJson[i].title + "</td>"
+            } else if (k == 1) {
+              tableStr += "<td >" + dataJson[i].childs[j].title + "</td>"
+            } else if (k == 2) {
+              tableStr += "<td >" + dataJson[i].childs[j].hour + "</td>"
+            } else if (k == 3) {
+              tableStr += "<td >" + dataJson[i].childs[j].total + "</td>"
+            } else if (k == 4) {
+              tableStr += "<td >" + dataJson[i].childs[j].package_type_1 + "</td>"
+            } else if (k == 5) {
+              tableStr += "<td >" + dataJson[i].childs[j].package_type_2 + "</td>"
+            }
+          } else {
+            if (k == 0) {
+              tableStr += "<td colspan= '2'>" + dataJson[i].title + "</td>"
+            } else if (k == 1) {
+              tableStr += "<td >" + dataJson[i].childs[j].package_type_2 + "</td>"
+            } else if (k == 2) {
+              tableStr += "<td >" + dataJson[i].childs[j].package_type_2 + "</td>"
+            } else if (k == 3) {
+              tableStr += "<td >" + dataJson[i].childs[j].package_type_2 + "</td>"
+            } else if (k == 4) {
+              tableStr += "<td >" + dataJson[i].childs[j].package_type_2 + "</td>"
+            }
+          }
+        }
+        tableStr += '</tr>'
+      }
+    }
+    tableStr += '</tbody>' +
+      '</table>'
+
+    table_con.innerHTML = tableStr
+  }
+</script>
+
+</html>

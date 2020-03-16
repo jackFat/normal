@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' *.url.cn *.idqqimg.com *.qq.com *.gtimg.cn 'unsafe-inline' 'unsafe-eval';">      -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="Copyright" content="Tencent" />
+	<meta name="format-detection" content="telephone=no" />
+	<title></title>
+    <script></script>
+    <style>
+		/*commonArea,手Q中H5页面通用css基础样式区域*/
+    	html,body, div, p, ol, ul, li, table, tbody, tr, td,
+        form, h1, h2, h3, h4, h5, dl, dt, dd, img, iframe, header, nav,
+        section, article, footer, figure, figcaption, menu, a, p,button {padding: 0;margin: 0; -webkit-user-select: none; -moz-user-select: none; -webkit-text-size-adjust: none;-webkit-touch-callout: none;}
+        textarea,input{padding: 0;margin: 0;}
+        html ,body{ width: 100%; height: 100%;}
+        body { font-size: 62.5%; font: 16px "Helvetica Neue", Helvetica, STHeiTi, "\5FAE\8F6F\96C5\9ED1", sans-serif; min-width: 320px; margin: 0 auto;background:#ece0c1}
+        em{ font-style: normal;}
+        a, span { text-decoration: none;display: inline-block;}
+        a:link, a:visited{text-decoration:none;}
+        a,button{outline: none; -webkit-tap-highlight-color:rgba(0,0,0,0);}
+        button{border:none; background: transparent;}
+		li {list-style: none;}
+        body{
+            text-align: center;
+        }
+        #content{
+            position: relative;
+            margin:auto;
+			margin-top:50px;
+            width:588px;
+            height:849px;
+            box-sizing: border-box;
+            overflow:hidden;
+        }
+        .letter-content{
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            position: absolute;
+            top:0;
+            left:0;
+            width:588px;
+            height:849px;
+        }
+        .copyImage{
+            width: 100%;
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 10002;
+            width:588px;
+            height:849px;
+            opacity:0;
+        }
+        .letter-title{
+            position: absolute;
+            top: 420px;
+            left: 0;
+            color: #d9feec;
+            text-shadow: 0 0 0.4em #348132, 0 0 0.4em #348132;
+            text-align: center;
+            width:100%;
+            font-size:48px;
+            z-index: 10001;
+        }
+        .letter-bg{
+            width: 588px;
+            height: 849px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index:10000;
+            background-image: url("./bg.jpg");
+            background-size: 100% 100%;
+            /* box-shadow: #348132 10px 10px 10px; */
+        }
+        button{
+            font-size:24px;
+            border:1px solid gray;
+            padding:10px 0;
+            margin:10px;
+            width:200px;
+        }
+        button:active{
+            background:#fafafa;
+        }
+    </style>
+    </head>
+    <body ontouchstart="">
+        <div id="content">
+            <img src="" class="copyImage">
+            <div class="letter-content" id="letter">
+                <p class="letter-title">1970:0:0</p>
+                <div class="letter-bg">
+                    <!-- <img id="letter-bg-img" src="https://sqimg.qq.com/qq_product_operations/qim/film/share/pink_letter.png"> -->
+                </div>
+                <div class="ecode"></div>
+            </div>
+        </div>
+        <button id="change-style">圆角透明</button>
+        <button id="save-local">保存到本地</button>
+        <a id="dl-hidden" style="display:none;"></a>
+    </body>
+    <script src="./zepto.js"></script>
+    <script src="./html2canvas.min.js"></script>
+    <script>
+        window.onload = function(){
+        var IMAGE_URL;
+        function takeScreenshot(){
+            var shareContent = document.getElementById('letter');//需要截图的包裹的（原生的）DOM 对象
+            var width = shareContent.offsetWidth; //获取dom 宽度
+            var height = shareContent.offsetHeight; //获取dom 高度
+            var canvas = document.createElement("canvas"); //创建一个canvas节点
+
+            var scale = 2; //定义任意放大倍数 支持小数
+            canvas.width = width * scale; //定义canvas 宽度 * 缩放
+            canvas.height = height * scale; //定义canvas高度 *缩放
+            canvas.getContext("2d").scale(scale,scale); //获取context,设置scale
+
+            // var rect = shareContent.getBoundingClientRect();//获取元素相对于视察的偏移量
+            // canvas.getContext("2d").translate(-rect.left,-rect.top);//设置context位置，值为相对于视窗的偏移量负值，让图片复位
+            var opts = {
+                scale:scale, // 添加的scale 参数
+                canvas:canvas, //自定义 canvas
+                logging: true, //日志开关
+                width:width, //dom 原始宽度
+                height:height, //dom 原始高度
+                backgroundColor: 'transparent',
+            };
+            html2canvas(shareContent, opts).then(function (canvas) {
+                IMAGE_URL = canvas.toDataURL("image/png");
+                $('.copyImage').attr('src',IMAGE_URL);
+            })
+        }
+
+        function dataURLtoBlob(dataurl) {
+            var arr = dataurl.split(','),
+                mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[1]),
+                n = bstr.length,
+                u8arr = new Uint8Array(n)
+            while (n--) {
+                u8arr[n] = bstr.charCodeAt(n)
+            }
+            return new Blob([u8arr], { type: mime })
+        }
+
+        function downloadBase64(dataUrl, filename) {
+            var imageFile, href
+            // const downloadLink = document.createElement('a')
+            var downloadLink = document.getElementById('dl-hidden')
+            try {
+                var blob = dataURLtoBlob(dataUrl)
+                    var href = window.URL.createObjectURL(blob)
+                    downloadLink.download = filename
+                    downloadLink.href = href
+                    downloadLink.click()
+            } catch (err) {
+            } finally {
+                if (href) {
+                    window.URL.revokeObjectURL(href)
+                }
+                // downloadLink.remove()
+            }
+        }
+
+				$(".letter-title").text(new Date().toLocaleString());
+				takeScreenshot();
+				var curStyle=0;
+				$("#change-style").click(function(e){
+						takeScreenshot();
+						if(curStyle==0){
+								$(".letter-content").attr("style","opacity:0.8;");
+								$(".letter-bg").attr("style","border-radius:50px;");
+								$("#change-style").text("普通");
+								curStyle=1;
+						}else{
+								$(".letter-content").attr("style","opacity:1;");
+								$(".letter-bg").attr("style","border-radius:0;");
+								$("#change-style").text("圆角透明");
+								curStyle=0;
+						}
+				})
+				$("#save-local").click(function(e){
+						downloadBase64(IMAGE_URL, '合成图.png')
+				})
+    }
+</script>
+</html>

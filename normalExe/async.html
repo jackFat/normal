@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+      .container{
+          width: 200px;
+          height: 300px;
+          overflow-y: auto;
+          background: pink;
+          margin: 0 auto;
+      }
+    </style>
+</head>
+<div class="container">
+    <div class="wrapper">
+        <span>大家仔细看，这两个vendor都是10272行，唯一的不同就是我要自执行这个vendor库，这里我引用的jquery，
+            所以这个文件只有jquery，自执行肯定要有模块函数，trunkid+1，所以hash会变。我们再好好回忆一下，
+            其实这也说明了这个插件的意义，我就是要抽出公共的库，OK，这个插件做到了，但是因为webpack打包机制，
+            不同文件生成不同turnkid，所以这是美中不足的一点。再回想一下，我们一般是不会随便修改main.js的，
+            所以从另一角度上来说这就是实现了持久化缓存。但我如果就是想保持vendor的hash不变要怎么办呢？</span>
+    </div>
+</div>
+<body>
+    <script>
+    //    async function fun1() {
+    //        console.log(1)
+    //        await fun2()
+    //        console.log(3)
+    //    }
+    //    async function fun2() {
+    //        console.log(2)
+    //    }
+    //    setTimeout(() => {
+    //        console.log(4)
+    //    }, 0);
+    //    function fun5() {
+    //        new Promise((resolve, reject) => {
+    //            console.log(55)
+    //            resolve()
+    //        }).then(() => {
+    //            console.log(5)
+    //        })
+    //    }
+    //    fun1()
+    //    fun5()
+    //    console.log(6)
+
+    //    console.log('promise1')
+    //    setTimeout(() => {
+    //        Promise.resolve().then(() => {
+    //            console.log('promise2')
+    //         setTimeout(() => {
+    //                Promise.resolve().then(() => {
+    //                    console.log('promise3')
+    //                })
+    //            }, 1000);
+    //        })
+    //    }, 10);
+    //    console.log('promise5')
+
+    console.log(1)
+    Promise.resolve().then(() => {
+        console.log('promise1')
+        setTimeout(() => {
+            console.log('timeout2')
+        }, 0);
+    })
+    setTimeout(() => {
+        console.log('timeout1')
+        Promise.resolve().then(() => {
+            console.log('promise2')
+        })
+    }, 0);
+
+    console.log(2)
+    
+    var name = 'zhangsan'
+    (function fn() {
+        var name = 'lisi'
+        console.log(name)
+    })()
+    console.log(name)
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .table-wrapper{
+      width: 100%;
+      overflow-x: hidden;
+      margin-bottom: 50px;
+    }
+    .table-inner{
+      overflow-x: auto;
+    }
+    .table-inner table{
+      border-collapse: collapse;
+      min-width: 100%;
+      text-align: center;
+      background: #fff;
+      font-size: 12px;
+    }
+    .table-inner th, .table-inner td{
+      border: 1px solid black;
+      padding: 10px;
+      white-space: nowrap;
+    }
+    .left-table th, .left-table td, .right-table th, .right-table td{
+      min-width: 150px;
+      max-width: 150px;
+    }
+    .left-table{
+      position: fixed;
+      left: 0;
+    }
+    .center-table{
+      min-width: 100%;
+      padding-left: 300px;
+      padding-right: 150px;
+      display: inline-block;
+    }
+    .center-table th .center-table td{
+      min-width: 400px;
+      width: auto;
+    }
+    .center-table th:first-child, .center-table tr td:first-child{
+      border-left: 0px;
+    }
+    .center-table th:last-child, .center-table tr td:last-child{
+      border-right: 0px;
+    }
+    .right-table{
+      position: fixed;
+      right: 0;
+    }
+    .nodata{
+      text-align: center;
+      line-height: 400px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="table-wrapper">
+    <div class="table-inner">
+      <div class="left-table">
+       <table>
+         <thead>
+           <th colspan="2">工作内容</th>
+         </thead>
+         <tbody>
+           <tr>
+             <td rowspan="2">通话次数1</td>
+             <td>通话次数2</td>
+           </tr>
+           <tr>
+             <td>通话次数2</td>
+           </tr>
+           <tr>
+            <td rowspan="2">通话次数1</td>
+             <td>通话次数2</td>
+           </tr>
+           <tr>
+             <td>通话次数2</td>
+           </tr>
+         </tbody>
+       </table>
+      </div>
+
+      <div class="right-table">
+          <table>
+            <thead>
+              <th>通话操作</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>通话的操作1</td>
+              </tr>
+              <tr>
+                <td>通话的操作2</td>
+              </tr>
+              <tr>
+                <td>通话的操作3</td>
+              </tr>
+              <tr>
+                <td>通话的操作4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      <div class="center-table">
+        <table>
+         <thead>
+           <th>工作内容1</th>
+           <th>工作内容2</th>
+           <th>工作内容3</th>
+           <th>工作内容4</th>
+           <th>工作内容5</th>
+           <th>工作内容6</th>
+           <th>工作内容2</th>
+           <th>工作内容3</th>
+           <th>工作内容4</th>
+         </thead>
+         <tbody>
+           <tr>
+             <td>通话内容1</td>
+             <td>通话内容2</td>
+             <td>通话内容3</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+           </tr>
+           <tr>
+             <td>通话内容1</td>
+             <td>通话内容2</td>
+             <td>通话内容3</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+           </tr>
+           <tr>
+             <td>通话内容1</td>
+             <td>通话内容2</td>
+             <td>通话内容3</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+           </tr>
+           <tr>
+             <td>通话内容1</td>
+             <td>通话内容2</td>
+             <td>通话内容3</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+           </tr>
+         </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+</body>
+
+<script>
+  for (let i=0; i<10; i++) {
+    for(j =0; j< 5; j++) {
+      console.log('j', j)
+    }
+    console.log('i', i)
+  }
+</script>
+</html>

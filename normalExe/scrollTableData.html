@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .table-wrapper{
+      width: 100%;
+      overflow-x: hidden;
+      margin-bottom: 50px;
+    }
+    .table-inner{
+      overflow-x: auto;
+    }
+    .table-inner table{
+      border-collapse: collapse;
+      min-width: 100%;
+      text-align: center;
+      background: #fff;
+      font-size: 12px;
+    }
+    .table-inner th, .table-inner td{
+      border: 1px solid black;
+      padding: 10px;
+      white-space: nowrap;
+    }
+    .left-table th, .left-table td, .right-table th, .right-table td{
+      min-width: 150px;
+      max-width: 150px;
+    }
+    .left-table{
+      position: fixed;
+      left: 0;
+    }
+    .center-table{
+      min-width: 100%;
+      padding-left: 300px;
+      padding-right: 150px;
+      display: inline-block;
+    }
+    .center-table th .center-table td{
+      min-width: 400px;
+      width: auto;
+    }
+    .center-table th:first-child, .center-table tr td:first-child{
+      border-left: 0px;
+    }
+    .center-table th:last-child, .center-table tr td:last-child{
+      border-right: 0px;
+    }
+    .right-table{
+      position: fixed;
+      right: 0;
+    }
+    .nodata{
+      text-align: center;
+      line-height: 400px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="table-wrapper">
+    <div class="table-inner">
+      <div class="left-table">
+       
+      </div>
+
+      <div class="right-table">
+          <table>
+            <thead>
+              <th>通话操作</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>通话的操作1</td>
+              </tr>
+              <tr>
+                <td>通话的操作2</td>
+              </tr>
+              <tr>
+                <td>通话的操作3</td>
+              </tr>
+              <tr>
+                <td>通话的操作4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      <div class="center-table">
+        <table>
+         <thead>
+           <th>工作内容1</th>
+           <th>工作内容2</th>
+           <th>工作内容3</th>
+           <th>工作内容4</th>
+           <th>工作内容5</th>
+           <th>工作内容6</th>
+           <th>工作内容2</th>
+           <th>工作内容3</th>
+           <th>工作内容4</th>
+         </thead>
+         <tbody>
+           <tr>
+             <td>通话内容1</td>
+             <td>通话内容2</td>
+             <td>通话内容3</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+           </tr>
+           <tr>
+             <td>通话内容1</td>
+             <td>通话内容2</td>
+             <td>通话内容3</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+           </tr>
+           <tr>
+             <td>通话内容1</td>
+             <td>通话内容2</td>
+             <td>通话内容3</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+           </tr>
+           <tr>
+             <td>通话内容1</td>
+             <td>通话内容2</td>
+             <td>通话内容3</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+             <td>通话内容4</td>
+             <td>通话内容5</td>
+             <td>通话内容6</td>
+           </tr>
+         </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+</body>
+
+<script>
+  let data = {"code":200,"message":"\u8bf7\u6c42\u6210\u529f","data":{"header":["\u5de5\u4f5c\u5185\u5bb9","\u6d77\u9e25","\u5408\u8ba1"],"col_name":[{"title":"\u7535\u8bdd\u76d2","row":4},{"title":"\u7535\u8bdd","row":1},{"title":"\u5fae\u4fe1","row":1},{"title":"\u9762\u8c08","row":1},{"title":"\u5176\u4ed6","row":1},{"title":"\u521d\u6b65\u8ddf\u8e2a","row":5},{"title":"\u5b89\u6392\u4f53\u9a8c","row":4},{"title":"\u4f53\u9a8c\u5230\u8bbf","row":2},{"title":"\u7b7e\u7ea6\u4e2d","row":3}],"node_way":["\u901a\u8bdd\u6b21\u6570","\u5df2\u901a\u6b21\u6570","\u672a\u901a\u6b21\u6570","\u901a\u8bdd\u65f6\u957f","\u901a\u8bdd\u6b21\u6570","\u6c9f\u901a\u6b21\u6570","\u6c9f\u901a\u6b21\u6570","\u6c9f\u901a\u6b21\u6570","\u5b8c\u5584\u5b66\u5458\u4fe1\u606f\u6b21\u6570","\u5b8c\u5584\u5bb6\u957f\u4fe1\u606f\u6b21\u6570","\u5b8c\u5584\u5bb6\u5ead\u4fe1\u606f\u6b21\u6570","\u9500\u552e\u8bc4\u5206\u6b21\u6570","\u8ddf\u8e2a\u56de\u8bbf\u6b21\u6570","\u5b89\u6392\u8bd5\u542c\u6b21\u6570","\u5b89\u6392\u53c2\u89c2\u6b21\u6570","\u53d6\u6d88\u8bd5\u542c\u6b21\u6570","\u53d6\u6d88\u53c2\u89c2\u6b21\u6570","\u8bd5\u542c\u5230\u8bbf\u6b21\u6570","\u53c2\u89c2\u5230\u8bbf\u6b21\u6570","\u5f55\u5165\u5408\u540c\u6b21\u6570","\u5f55\u5165\u5b9a\u91d1\u6b21\u6570","\u8ba2\u91d1\u9000\u8d39\u6b21\u6570"],"user_data":{"2221":[0,0,0,0,0,"1",0,0,"23","9",0,0,1,"8","13","1",0,"4",0,"12",0,0]},"hj_data":[0,0,0,"0\u79d2",0,1,0,0,23,9,0,0,1,8,13,1,0,4,0,12,0,0]}}
+  console.log(data)
+  let leftTableStr = `<table>
+         <thead>`
+  let centerTableStr = `<table>
+         <thead>`
+  let rightTableStr = `<table>
+                       <thead>`
+  for(let i in data.data.header) {
+    if (i == 0) {
+      leftTableStr += `<th colspan="2">${data.data.header[i]}</th>`
+    } else if (i == data.data.header.length - 1) {
+      rightTableStr += `<th>${data.data.header[i]}</th>`
+    } else {
+      centerTableStr += `<th>${data.data.header[i]}</th>`
+    }
+  }
+  
+  for (let k in data.data.node_way) {}
+  
+  let centerTable_cur = ''
+  let arr = []
+  for (let m in data.data.user_data) {
+    for (let n in data.data.user_data[m]) {
+      arr.push(data.data.user_data[m][n])
+    }
+  }
+  console.log(arr)
+</script>
+</html>

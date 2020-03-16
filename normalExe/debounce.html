@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+     #container{
+         width: 100%;
+         height: 200px;
+         background-color: #eeeeee;
+         text-align: center;
+         line-height: 200px;
+     }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <input type="button" id="input" value="cancel">
+</body>
+<script>
+  let count =0
+  let debounce = function(fn, wait = 2000, immediate=false) {
+      let timer, rs
+      let debounced = function(...args) {
+         if (timer) {
+             clearTimeout(timer)
+         }
+         if (immediate) {
+             let callnow = !timer
+            timer = setTimeout(() => {
+                timer = null
+            }, wait)
+            if (callnow) {
+                rs = fn.apply(this, args)
+            }    
+         } else {
+            timer = setTimeout(() => {
+                fn.apply(this, args)
+            }, wait)
+         }
+         return rs
+      }
+      debounced.cancel = function() {
+        clearTimeout(timer)
+      }
+      return debounced
+  }
+  let container = document.querySelector('#container')
+  function update() {
+      count++
+      container.innerHTML = count
+      return count
+  }
+  let action = debounce(update)
+  container.addEventListener('mousemove', action, true)
+  let cancelBtn = document.querySelector("#input")
+  cancelBtn.addEventListener('click', action.cancel, true)
+</script>
+</html>

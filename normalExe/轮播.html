@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#app{
+				width: 500px;
+				margin: 0 auto;
+				border: 1px solid #000000;
+				background:#03A9F4;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<marquee>
+				<font size=+3 color=red>Hello,World</font>
+				<font size=+3 color=red>Hello,Wo驱蚊器rld</font>
+				<font size=+3 color=red>Hello,Worl青蛙多撒d</font>
+				<font size=+3 color=red>Hello,Worl请问23d</font>
+			</marquee>
+			<marquee width="330" height="30" bgcolor="red">我宽330像素，高30像素。</marquee> 
+			<marquee behavior="alternate">我来回滚动</marquee> 
+			<marquee behavior="scroll">我单方向循环滚动</marquee>
+			<marquee behavior="slide" >只滚动一次</marquee>  
+			<marquee behavior="slide" direction="up">我改向上只滚动一次了</marquee> 
+			<marquee direction="right">我向右滚动</marquee> 
+			<marquee direction="left">我向左滚动</marquee> 
+			<marquee direction="up" truespeed="40" scrolldelay="600">我向上滚动</marquee> 
+			<marquee direction="down">我向下滚动</marquee> 
+			<!--vspace：相当于    margin-top: 30px;和   margin-bottom: 30px;这两个简写-->
+			<!--hspace：相当于    margin-left: 40px;和   margin-right: 40px;这两个简写-->
+			<marquee width="100%" height="30" vspace="30" hspace="40" bgcolor="red">我矩形边缘水平和垂直距周围各10像素。我矩形边缘水平和垂直距周围各10像素。我矩形边缘水平和垂直距周围各10像素。我矩形边缘水平和垂直距周围各10像素。我矩形边缘水平和垂直距周围各10像素。</marquee> 
+			<marquee width="300" height="30" vspace="50" hspace="50" bgcolor="red">我矩形边缘水平和垂直距周围各50像素。</marquee>
+			<!--loop属性决定滚动文字的滚动次数，缺省是无限循环。参数值可以是任意的正整数，如果设置参数值为-1或infinite时将无限循环。如下所示：--> 
+			<marquee loop="2">我滚动2次。</marquee> 
+			<marquee loop="infinite">我无限循环滚动。</marquee> 
+			<marquee loop="-1">我无限循环滚动。</marquee> 
+			<!--scrollamount和scrolldelay属性 这两个属性决定文字滚动的速度（scrollamount）和延时（scrolldelay），参数值都是正整数。如下所示：--> 
+			<marquee scrollamount="100">我速度很快.</marquee> 
+			<marquee scrollamount="50">我慢了些。</marquee> 
+			<marquee scrolldelay="300">我小步前进。</marquee> 
+			<marquee scrolldelay="1000">我大步前进。</marquee> 
+			<!--align 表示元素的垂直对齐方式，值可以是top，middle，bottom，默认为middle--> 
+			<marquee align="top" height="60" style="border: 1px solid #000000;">我文字顶对齐。</marquee>
+			<marquee align="bottom" height="60" style="border: 1px solid #000000;">我文字底对齐。</marquee>
+			<marquee align="middle" height="60" style="border: 1px solid #000000;">我文字居中对齐。</marquee>
+			<!--marquee 元素的默认宽度与其父元素的宽度相等。如果 MARQUEE 位于没有指定宽度的 TD 内，你就需要明确设置 marquee 的宽度。如果 marquee 和 TD 的宽度都没有指定，那么滚动字幕就将限定于 1 个像素宽。-->
+<!--　　要创建垂直滚动的字幕，请将其 scrollLeft 属性设定为 0。要创建水平滚动的字幕，请将其 scrollTop 属性设定为 0，这将覆盖任何脚本设置。-->
+			
+			<marquee id=m1 direction=right style="border-width:2px;border-style:solid;" width=200 height=200>向右</marquee> 
+			<button onclick="alert('scrollLeft: ' + m1.scrollLeft + ' scrollRight: ' + m1.scrollTop)">读取</button>
+			<button onclick="m1.stop();m1.scrollLeft = 190;">停止并设置 scrollLeft=190</button> 
+　			<button onclick="m1.start();">开始</button>
+		</div>
+		
+	</body>
+</html>

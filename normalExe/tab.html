@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      button.active{
+          border: 1px solid green;
+          color: green;
+      }
+      p{
+          display: none;
+      }
+      p.active{
+          color: blueviolet;
+          display: block;
+      }
+    </style>
+</head>
+<body>
+    <button>按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <p>内容一</p>
+    <p>内容二</p>
+    <p>内容三</p>
+</body>
+<script>
+  window.onload = function () {
+      var bts = document.querySelectorAll('button')
+      var ps = document.querySelectorAll('p')
+    //   for(var i =0; i< bts.length; i++) {
+    //       bts[i].index = i
+    //       bts[i].onclick = function() {
+    //           console.log(this.index)
+    //           for(var i=0; i< bts.length; i++) {
+    //               bts[i].className = ''
+    //               ps[i].className = ''
+    //           }
+    //           this.className = 'active'
+    //           ps[this.index].className = 'active'
+    //       }
+    //   }
+
+    for(let i=0; i<bts.length; i++) {
+        bts[i].onclick = function() {
+            for(let i=0; i<bts.length; i++) {
+                bts[i].className = ''
+                ps[i].className = ''
+            }
+            bts[i].className = 'active'
+            ps[i].className = 'active'
+        }
+    }
+  }
+</script>
+</html>

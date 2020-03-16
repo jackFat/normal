@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+     let arr = [['zhangsan', 20, '19岁'], ['liwen', 14, '12岁'], ['lili', 24, '19岁'], ['wenzi', 15, '30岁'], ['liji', 20, '19岁'], ['limi', 25, '25岁']]
+     function sortBy(str) {
+       return function (obj1, obj2) {
+         var val1 = obj1[str]
+         var val2 = obj2[str]
+         if (val1 < val2) {
+           return -1
+         } else if (val1 > val12) {
+           return 1
+         } else {
+           return 0
+         }
+       }
+     }
+     let arrLast = arr.pop(arr.length - 1)
+         newArr = arr.slice(0, arr.length)
+         newSortArr = newArr.sort(sortBy())
+     console.log(newArr)
+     console.log(newSortArr)
+  </script>
+</body>
+</html>

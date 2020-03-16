@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="goTop">togao</div>
+</body>
+
+<script>
+  const Dog = {
+    name: 'dog',
+    eatBone(taste) {
+      console.log('吃骨头' + taste, this)
+    }
+  }
+  const Cat = {
+    name: 'cat',
+    eatFish(fish) {
+      console.log('吃鱼' + fish, this)
+    }
+  }
+  Dog.eatBone()
+  Cat.eatFish()
+  Dog.eatBone.call(Cat, "排骨")
+  Cat.eatFish.call(Dog, "鲫鱼")
+  Dog.eatBone
+  const arr = [1,2,3,4,5]
+  const Result = Math.max.apply(this, arr)
+  console.log(Result)
+</script>
+
+<script>
+  window.onload = function() {
+    var doc = document.getElementById('goTop')
+    doc.onclick = function() {
+      window.location.href = 'https://www.baidu.com'
+    }
+  }
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-01-02 16:50:51
+ * @LastEditTime : 2020-01-02 16:52:01
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \normal\1.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .father{
+	width: 300px;
+	height: 200px;
+	position: relative;
+	transition: all 1s linear;
+	transform-style: preserve-3d;
+	}
+.before,.after{
+	width: 300px;
+	height: 200px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.before{
+	background: red;
+}
+.after{
+	background: lightblue;
+	transform: rotateY(-180deg);
+}
+.father:hover{
+	transform: rotateY(180deg);
+}
+  </style>
+</head>
+<body>
+  <div class="father">
+		<div class="before">正面</div>
+		<div class="after">反面</div>
+</div>
+</body>
+</html>

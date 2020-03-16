@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+    function p1() {
+        return new Promise((resolve, reject) => {
+            console.log('p1')
+            resolve()
+        })
+    }
+    function p2() {
+        return new Promise((resolve, reject) => {
+            console.log('p2')
+            resolve()
+        })
+    }
+    function p3() {
+        return new Promise((resolve, reject) => {
+            console.log('p3')
+            reject('eooro')
+        }).catch((e) => {
+            console.log(e)
+        })
+    }
+    p1().then(() => {
+        return p2()
+    }).then(() => {
+        return p3()
+    }).catch((e) => {
+        console.log(e)
+    })
+  </script>
+</body>
+</html>
