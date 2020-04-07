@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 防抖函数
+    function debounce(func, wait) {
+      let timeout = null
+      return function() {
+        let context = this
+        let args = arguments
+        if (timeout) clearTimeout(timeout)
+        timeout = setTimeout(() => {
+          func.apply(context, args)
+        }, wait);
+      }
+    }
+
+    // 节流函数
+    function throttle(func, wait) {
+      let timeout = null
+      return function() {
+        let context = this
+        let args = arguments
+        if (!timeout) {
+          timeout = setTimeout(() => {
+            timeout = null
+            func.apply(context, args)
+          }, wait);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

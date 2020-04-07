@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const arr = [1, [1,2], [1,2,3]] 
+
+    // 序列化后正则
+    const str = `[${JSON.stringify(arr).replace(/(\[|\])/g, '')}]`
+    const strArr = JSON.parse(str)
+    console.log(strArr, 'strArr')
+
+    // 递归
+    function flat(arr) {
+      let result = []
+      for (const item of arr) {
+        item instanceof Array ? result = result.concat(flat(item)) : result.push(item)
+      }
+      return result
+    }
+    const floatArr = flat(arr)
+    console.log(floatArr, 'floatArr')
+
+    // reduce递归
+    function reduceFlat(arr) {
+      return arr.reduce((prev, cur) => {
+        return prev.concat(cur instanceof Array ? reduceFlat(cur) : cur)
+      }, [])
+    }
+    const reduceFlatArr = reduceFlat(arr)
+    console.log(reduceFlatArr, 'reduceFlatArr')
+
+    // 迭代+展开运算符
+    // let restArr = []
+    // while (arr.some(Array.isArray)) {
+    //   restArr = [].concat(...arr)
+    // }
+    // console.log(restArr, 'restArr')
+  </script>
+</body>
+</html>
