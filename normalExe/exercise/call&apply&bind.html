@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // call
+    function foo(name, age) {
+      this.name = name
+      this.age = age
+      console.log(this.name + '的年龄是：' + this.age)
+    }
+    const obj = {
+      name: 'jack',
+      age: 20
+    }
+    // obj.foo = foo
+    // obj.foo()
+    Function.prototype.newCall = function(context) {
+      // 1、判断context是否为object，如果是object就代表可能是Object 或者 null，如果不是就赋值一个空对象
+      if (typeof context === 'object') {
+        context = context || window // context 如果是null就会赋值为window
+      } else {
+        context = Object.create(null)
+      }
+
+      // 2、在context下挂载一个函数，函数所在的key随机生成，防止context上已有同名key
+      var fn = new Date() + '' + Math.random() //用时间戳+随机数拼接成一个随机字符串作为一个新的key
+      context[fn] = this
+      
+      // 3、newCall如果还有其他参数传入也需要考虑到
+      var args = []
+      for (var i = 1; i < arguments.length; i++) {
+        args.push('arguments[' + i + ']')
+      }
+
+      // 4、重点，执行context[fn]函数，只能eval,因为newCall的传入参数不确定
+      var result = eval('context[fn](' + args + ')') //args是一个数组，但是当它和字符串相加时自动调用内部的toString方法转成字符串
+
+      delete context[fn] //用完之后从context上删除这个函数
+
+      // 5、返回结果
+      return result
+    }
+    foo.newCall(obj, obj.name, obj.age)
+
+    // apply
+    Function.prototype.newApply = function(context, array) {
+      if (typeof context === 'object') {
+        context = context || window
+      } else {
+        context = Object.create(null)
+      }
+
+      var fn = new Date() + '' + Math.random()
+      context[fn] = this
+      
+      var args = null
+      if (array) {
+        args = []
+        // 这里不需要argument
+        for (var i = 0; i < array.length; i++) {
+          args.push('array[' + i + ']')
+        }
+      }
+      var result = eval('context[fn](' + args + ')')
+
+      delete context[fn]
+      return result
+    }
+    foo.newApply(obj, [obj.name, obj.age])
+
+    // bind
+    Function.prototype.newBind = function(context) {
+      if (typeof context === 'object') {
+        context = context || window
+      } else {
+        context = Object.create(null)
+      }
+
+      var args = []
+      for(var i = 1; i < arguments.length; i++) {
+        args.push(arguments[i])
+      }
+
+      var fn = new Date() + '' + Math.random()
+      context[fn] = this
+
+      // 重点这里包个function形成闭包
+      return function() {
+        var result = eval('context[fn](' + args + ')')
+        delete context[fn]
+        return fn
+      }
+    }
+
+    // 或者 newBind1
+Function.prototype.newBind1 = function(context){
+  var args = []
+  for(var i = 1; i < arguments.length; i++) {
+    args.push(arguments[i])
+  }
+
+  return function(){
+    Function.prototype.newApply(context, args)
+  }
+}
+
+// 或者 newBind2
+Function.prototype.newBind2 = function(context){
+  var args = []
+  for(var i = 1; i < arguments.length; i++) {
+    args.push(arguments[i])
+  }
+
+  return function(){
+    eval('Function.prototype.newCall(context, '+args+')')
+  }
+}
+  </script>
+</body>
+</html>
