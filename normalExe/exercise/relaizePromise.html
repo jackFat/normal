@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var PENDING = 'pending'
+    var FULFILLED = 'fulfilled'
+    var REJECTED = 'rejected'
+
+    function MyPromise(fn) {
+      this.status = PENDING
+      this.value = null
+      this.reason = null
+
+      // 
+      var that = this
+      function reject(reason) {
+        if (that.status === PENDING) {
+          that.status = REJECTED
+          that.reason = reason
+        }
+      }
+
+      try {
+        fn(resolve, reject)
+      } catch (error) {
+        reject(error)
+      }
+    }
+  </script>
+</body>
+</html>
